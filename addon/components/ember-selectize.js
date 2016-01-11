@@ -715,7 +715,10 @@ export default Ember.Component.extend({
       Ember.removeObserver(obj, this.get('_labelPath'), this, '_labelDidChange');
     }
     if (this._selectize) {
-      this._selectize.removeOption(get(obj, this.get('_valuePath')));
+      var option = get(obj, this.get('_valuePath'));
+      if (option) {
+        this._selectize.removeOption(option);
+      }
     }
   },
 
